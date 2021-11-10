@@ -1,5 +1,9 @@
+from Extract.Reader import Reader
+
+
 def main():
-    pass
+    reader = Reader()
+
 
 if __name__ == '__main__':
     main()
