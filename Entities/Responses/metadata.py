@@ -1,11 +1,4 @@
 class Metadata:
-    browser = None
-    platform = None
-    date_land = None
-    date_submit = None
-    user_agent = None
-    referer = None
-    network_id = None
 
     def __init__(self, browser, platform, date_land, date_submit, user_agent, referer, network_id):
         self.browser = browser

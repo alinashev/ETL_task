@@ -19,7 +19,7 @@ class LoadingToDWH:
             print("Successfully inserted")
 
     @staticmethod
-    def load_matadata(list_for_convert):
+    def load_metadata(list_for_convert):
         cursor = DataBase.connect().cursor()
 
         for i in list_for_convert:
