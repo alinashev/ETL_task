@@ -1,4 +1,5 @@
 from Extract.Reader import Reader
+from Load.DataBase import DataBase
 from Load.loadingToDWH import LoadingToDWH
 from Transform.ConvertToObjectQuestions import ConvertToObjectQuestions
 
@@ -8,6 +9,7 @@ def main():
     array_json = reader.get_json()
     LoadingToDWH.load_questions(ConvertToObjectQuestions.convert_questions(array_json))
     LoadingToDWH.load_metadata(ConvertToObjectQuestions.convert_metadata(array_json))
+    DataBase.close()
 
 
 if __name__ == '__main__':

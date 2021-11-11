@@ -21,6 +21,13 @@ class DataBase:
                                                     database=cls.__database)
             except (Exception, Error) as error:
                 print(error)
+
         else:
-            print("Connection established")
+            print('Connection established')
         return cls.__connection
+
+    @classmethod
+    def close(cls):
+        if cls.__connection:
+            print('Close connection')
+            cls.__connection.close()

@@ -16,7 +16,8 @@ class LoadingToDWH:
             )
             cursor.execute(insert_query)
             DataBase.connect().commit()
-            print("Successfully inserted")
+        print("Successfully inserted")
+        cursor.close()
 
     @staticmethod
     def load_metadata(list_for_convert):
@@ -39,3 +40,4 @@ class LoadingToDWH:
             cursor.execute(insert_query)
             DataBase.connect().commit()
         print("Successfully inserted")
+        cursor.close()
