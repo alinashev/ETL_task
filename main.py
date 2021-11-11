@@ -5,9 +5,9 @@ from Transform.ConvertToObjectQuestions import ConvertToObjectQuestions
 
 def main():
     reader = Reader()
-    array_json_questions = reader.open_json_file()['questions']
-    load = LoadingToDWH()
-    load.loadQuestions(ConvertToObjectQuestions.convert_questions(array_json_questions))
+    array_json = reader.get_json()
+    LoadingToDWH.load_questions(ConvertToObjectQuestions.convert_questions(array_json))
+    LoadingToDWH.load_matadata(ConvertToObjectQuestions.convert_metadata(array_json))
 
 
 if __name__ == '__main__':
