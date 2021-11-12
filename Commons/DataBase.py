@@ -2,6 +2,7 @@ import psycopg2
 from psycopg2 import Error
 
 import credentials
+from Logger import Logger
 
 
 class DataBase:
@@ -14,20 +15,20 @@ class DataBase:
     @classmethod
     def connect(cls):
         if not cls.__connection:
-            print('Establishing connection...')
+            Logger.write_log('Establishing connection...')
             try:
                 cls.__connection = psycopg2.connect(user=cls.__user,
                                                     password=cls.__password,
                                                     database=cls.__database)
             except (Exception, Error) as error:
-                print(error)
+                Logger.write_error(error)
 
         else:
-            print('Connection established')
+            Logger.write_log('Connection established')
         return cls.__connection
 
     @classmethod
     def close(cls):
         if cls.__connection:
-            print('Close connection')
+            Logger.write_log('Close connection')
             cls.__connection.close()

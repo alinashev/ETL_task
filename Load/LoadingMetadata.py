@@ -1,5 +1,6 @@
 from Commons.DataBase import DataBase
 from Load.Loading import Loading
+from Logger import Logger
 
 
 class LoadingMetadata(Loading):
@@ -23,6 +24,6 @@ class LoadingMetadata(Loading):
 
                 cursor.execute(insert_query)
                 DataBase.connect().commit()
-            print("Successfully inserted")
+            Logger.write_log('Successfully inserted')
         except Exception as error:
-            print(error)
+            Logger.write_error(error)

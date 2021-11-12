@@ -1,5 +1,5 @@
 from Commons.Convert.Convert import Convert
-from Entities.Questions.questions import Question
+from Entities.questions import Question
 
 
 class ConvertQuestions(Convert):
