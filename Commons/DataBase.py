@@ -1,16 +1,16 @@
 import psycopg2
 from psycopg2 import Error
 
-import credentials
+import settings
 from Logger import Logger
 
 
 class DataBase:
     __connection = None
 
-    __user = credentials.user
-    __password = credentials.password
-    __database = credentials.database
+    __user = settings.user
+    __password = settings.password
+    __database = settings.database
 
     @classmethod
     def connect(cls):
