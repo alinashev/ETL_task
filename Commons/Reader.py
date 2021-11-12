@@ -2,7 +2,7 @@ import json
 
 
 class Reader:
-    __path = 'Lake/jsonTypesFile/osmi.json'
+    __path = 'Resources/Lake/jsonTypesFile/osmi.json'
 
     def open_json_file(self):
         with open(self.__path, 'r', encoding='utf-8') as f:
