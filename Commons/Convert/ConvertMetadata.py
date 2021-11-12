@@ -8,12 +8,5 @@ class ConvertMetadata(Convert):
         list_of_metadata_obj = list()
         for i in array_json:
             current = i['metadata']
-            list_of_metadata_obj.append(Metadata(current['browser'],
-                                                 current['platform'],
-                                                 current['date_land'],
-                                                 current['date_submit'],
-                                                 current['user_agent'],
-                                                 current['referer'],
-                                                 current['network_id']
-                                                 ))
+            list_of_metadata_obj.append(Metadata(**current))
         return list_of_metadata_obj
