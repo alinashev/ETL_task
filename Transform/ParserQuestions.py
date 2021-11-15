@@ -1,10 +1,10 @@
-from Transform.Convert import Convert
+from Transform.Parser import Parser
 from Entities.questions import Question
 
 
-class ConvertQuestions(Convert):
+class ParserQuestions(Parser):
 
-    def convert_to_obj(self,json_string):
+    def parse_to_obj(self, json_string):
         array_json = json_string['questions']
         list_of_question_obj = list()
         for i in array_json:

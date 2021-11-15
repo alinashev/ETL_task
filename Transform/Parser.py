@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 
 
-class Convert(ABC):
+class Parser(ABC):
     @abstractmethod
-    def convert_to_obj(self, json_string):
+    def parse_to_obj(self, json_string):
         pass
 

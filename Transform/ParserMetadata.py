@@ -1,9 +1,9 @@
-from Transform.Convert import Convert
+from Transform.Parser import Parser
 from Entities.metadata import Metadata
 
 
-class ConvertMetadata(Convert):
-    def convert_to_obj(self, json_string):
+class ParserMetadata(Parser):
+    def parse_to_obj(self, json_string):
         array_json = json_string['responses']
         list_of_metadata_obj = list()
         for i in array_json:

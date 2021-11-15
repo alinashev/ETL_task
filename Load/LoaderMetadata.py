@@ -1,9 +1,9 @@
 from Commons.DataBase import DataBase
-from Load.Loading import Loading
+from Load.Loader import Loader
 from Logger import Logger
 
 
-class LoadingMetadata(Loading):
+class LoaderMetadata(Loader):
     def loading_to_DWH(self, list_for_load):
         try:
             cursor = DataBase.connect().cursor()
