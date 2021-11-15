@@ -9,7 +9,7 @@ from Load.LoaderQuestion import LoaderQuestion
 
 
 def main():
-    logging.basicConfig(level=logging.INFO, filename='Logs/logs.log', filemode='w',
+    logging.basicConfig(level=logging.INFO, filename='logs.log', filemode='w',
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     reader = ReaderJSON('Resources/Lake/jsonTypesFile/osmi.json')
     array_json = reader.get_json()
