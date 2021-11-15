@@ -1,5 +1,5 @@
 from Transform.Convert import Convert
-from Entities.Responses.metadata import Metadata
+from Entities.metadata import Metadata
 
 
 class ConvertMetadata(Convert):
