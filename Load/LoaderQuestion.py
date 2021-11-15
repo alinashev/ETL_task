@@ -1,6 +1,7 @@
+import logging
+
 from Commons.DataBase import DataBase
 from Load.Loader import Loader
-from Logger import Logger
 
 
 class LoaderQuestion(Loader):
@@ -17,7 +18,7 @@ class LoaderQuestion(Loader):
                 )
                 cursor.execute(insert_query)
                 DataBase.connect().commit()
-            Logger.write_log('Successfully inserted')
+            logging.info('Successfully inserted')
             cursor.close()
         except Exception as error:
-            Logger.write_error(error)
+            logging.error(error)
