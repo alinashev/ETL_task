@@ -4,10 +4,10 @@ from logzero import logger, logfile
 class Logger:
     @staticmethod
     def write_log(log):
-        logfile('logs.log')
+        logfile('Logs/logs.log')
         logger.info(log)
 
     @staticmethod
     def write_error(error):
-        logfile('errors.log')
+        logfile('Logs/errors.log')
         logger.error(error)
