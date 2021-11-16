@@ -13,8 +13,8 @@ def main():
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     reader = ReaderJSON('Resources/Lake/jsonTypesFile/osmi.json')
     array_json = reader.get_json()
-    LoaderQuestion().loading_to_DWH(ParserQuestions.parse_to_obj(array_json))
-    LoaderMetadata().loading_to_DWH(ParserMetadata.parse_to_obj(array_json))
+    LoaderQuestion().loading_to_DWH(ParserQuestions().parse_to_obj(array_json))
+    LoaderMetadata().loading_to_DWH(ParserMetadata().parse_to_obj(array_json))
     DataBase.close()
 
 

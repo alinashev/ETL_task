@@ -3,6 +3,5 @@ from Entities.questions import Question
 
 
 class ParserQuestions(Parser):
-    @staticmethod
-    def parse_to_obj(json_string):
-        return (Question(i['id'], i['question'], i['field_id'], None) for i in json_string['questions'])
+    def parse_to_obj(self, json_string):
+        return [Question(i['id'], i['question'], i['field_id'], None) for i in json_string['questions']]
