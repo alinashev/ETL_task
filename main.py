@@ -13,10 +13,10 @@ def main():
     logging.basicConfig(level=logging.INFO, filename='Logs/logs.log', filemode='w',
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-    download = DownloaderFromS3()
-    download.download_folder('Resources')
+    downloader = DownloaderFromS3()
+    downloader.download_folder('Resources')
 
-    reader = ReaderJSON(download.get_path())
+    reader = ReaderJSON(downloader.get_path())
     array_json = reader.get_json()
 
     LoaderQuestion().loading_to_DWH(ParserQuestions().parse_to_obj(array_json))
