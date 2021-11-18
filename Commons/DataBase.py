@@ -10,6 +10,8 @@ class DataBase:
     __user = settings.user
     __password = settings.password
     __database = settings.database
+    __host = settings.host
+    __port = settings.port
 
     @classmethod
     def connect(cls):
@@ -18,7 +20,9 @@ class DataBase:
             try:
                 cls.__connection = psycopg2.connect(user=cls.__user,
                                                     password=cls.__password,
-                                                    database=cls.__database)
+                                                    database=cls.__database,
+                                                    host=cls.__host,
+                                                    port=cls.__port)
             except (Exception, Error) as error:
                 logging.error(error)
 
