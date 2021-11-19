@@ -3,7 +3,7 @@ import boto3
 import settings
 
 
-class DownloaderFromS3:
+class StorageS3:
     __path = None
     __bucket_name = 'task-bucket-a'
     __s3 = boto3.resource('s3',
@@ -25,3 +25,6 @@ class DownloaderFromS3:
 
     def get_path(self):
         return self.__path
+
+    def load_logs_to_s3(self, log_file_name):
+        self.__s3.meta.client.upload_file(log_file_name, self.__bucket_name, 'Logs/{name}'.format(name=log_file_name))

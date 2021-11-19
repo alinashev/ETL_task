@@ -1,6 +1,7 @@
+import datetime
 import logging
 
-from Commons.DownloaderFromS3 import DownloaderFromS3
+from Commons.StorageS3 import StorageS3
 from Transform.ParserMetadata import ParserMetadata
 from Transform.ParserQuestions import ParserQuestions
 from Commons.ReaderJSON import ReaderJSON
@@ -10,19 +11,28 @@ from Load.LoaderQuestion import LoaderQuestion
 
 
 def main():
-    logging.basicConfig(level=logging.INFO, filename='Logs/logs.log', filemode='w',
+    time = datetime.datetime.now()
+    log_file_name = '{year}-{month}-{day} {hour}-{minute}-{second}.log'.format(year=time.year,
+                                                                               month=time.month,
+                                                                               day=time.day,
+                                                                               hour=time.hour,
+                                                                               minute=time.minute,
+                                                                               second=time.second)
+
+    logging.basicConfig(level=logging.INFO, filename=log_file_name, filemode='w',
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-    downloader = DownloaderFromS3()
-    downloader.download_folder('Resources')
+    storage = StorageS3()
+    storage.download_folder('Resources')
 
-    reader = ReaderJSON(downloader.get_path())
+    reader = ReaderJSON(storage.get_path())
     array_json = reader.get_json()
 
     LoaderQuestion().loading_to_DWH(ParserQuestions().parse_to_obj(array_json))
     LoaderMetadata().loading_to_DWH(ParserMetadata().parse_to_obj(array_json))
 
     DataBase.close()
+    storage.load_logs_to_s3(log_file_name)
 
 
 if __name__ == '__main__':
