@@ -25,6 +25,7 @@ class DataBase:
                                                     port=cls.__port)
             except (Exception, Error) as error:
                 logging.error(error)
+                exit()
 
         else:
             logging.info('Connection established')
