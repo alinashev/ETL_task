@@ -7,7 +7,8 @@ from Load.Loader import Loader
 class LoaderMetadata(Loader):
     def loading_to_DWH(self, list_for_load):
         try:
-            cursor = DataBase.connect().cursor()
+            connect = DataBase.connect()
+            cursor = connect.cursor()
 
             for i in list_for_load:
                 metadata_obj = i
@@ -24,7 +25,7 @@ class LoaderMetadata(Loader):
                 )
 
                 cursor.execute(insert_query)
-                DataBase.connect().commit()
+                connect.commit()
             logging.info('Successfully inserted')
         except Exception as error:
             logging.error(error)

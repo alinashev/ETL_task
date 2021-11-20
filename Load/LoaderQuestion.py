@@ -7,7 +7,8 @@ from Load.Loader import Loader
 class LoaderQuestion(Loader):
     def loading_to_DWH(self, list_for_load):
         try:
-            cursor = DataBase.connect().cursor()
+            connect = DataBase.connect()
+            cursor = connect.cursor()
             for i in list_for_load:
                 questions_obj = i
                 insert_query = """INSERT INTO questions (id, question, field_id) VALUES ('{id}', '{question}', 
@@ -17,7 +18,7 @@ class LoaderQuestion(Loader):
                     field_id=questions_obj.field_id
                 )
                 cursor.execute(insert_query)
-                DataBase.connect().commit()
+                connect.commit()
             logging.info('Successfully inserted')
             cursor.close()
         except Exception as error:
