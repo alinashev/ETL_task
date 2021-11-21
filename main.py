@@ -11,8 +11,8 @@ from Load.LoaderQuestion import LoaderQuestion
 
 
 def main():
-    time = datetime.datetime.now()
-    log_file_name = '{year}-{month}-{day} {hour}-{minute}-{second}.log'.format(year=time.year,
+    time = datetime.datetime.utcnow()
+    log_file_name = '{year}-{month}-{day}UTC{hour}-{minute}-{second}.log'.format(year=time.year,
                                                                                month=time.month,
                                                                                day=time.day,
                                                                                hour=time.hour,
